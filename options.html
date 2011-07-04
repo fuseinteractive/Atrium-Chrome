@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Options for the Atrium Timer extension</title>
+  <style>
+    body {
+      background-color:#eee;
+    }
+    #atrium-url,
+    #atrium-username,
+    #atrium-password {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 10pt;
+    }
+  </style>
+
+  <script>
+  //Restores input box states to saved values from localStorage.
+  function restore_options() {
+    var atriumUrl = localStorage["atrium_url"];
+    var atriumUsername = localStorage["atrium_username"];
+    var atriumPassword = localStorage["atrium_password"];
+
+    if (document.getElementById("atrium-url")) {
+      document.getElementById("atrium-url").value = atriumUrl;
+    }
+    alert(document.getElementById("atrium-url").value);
+    if (document.getElementById("atrium-username")) {
+      document.getElementById("atrium-username").value = atriumUsername;
+    }
+    if (document.getElementById("atrium-password")) {
+      document.getElementById("atrium-password").value = atriumPassword;
+    }
+  }
+
+  //Saves options to localStorage.
+  function save_options() {
+    localStorage["atrium_url"] = document.getElementById("atrium-url").value;
+    localStorage["atrium_username"] = document.getElementById("atrium-username").value;
+    localStorage["atrium_password"] = document.getElementById("atrium-password").value;
+
+    // Update status to let user know options were saved.
+    var status = document.getElementById("status");
+    status.innerHTML = "Options Saved.";
+    setTimeout(function() {
+      status.innerHTML = "";
+    }, 750);
+  }
+  </script>
+</head>
+
+<body onload="restore_options()">
+  <table border="0">
+    <tr>
+      <td rowspan="4" valign="top" align="center" width="80">
+        <img src="atrium.png" width="64" height="64" />
+      </td>
+      <td height="22"></td>
+    </tr>
+    <tr>
+      <td valign="center" colspan="2">
+        <div id="atrium-url">
+          <strong>Enter your atrium url below:</strong>
+          <br />
+          <input id="atrium-url" type="input" name="atrium-url" value="http://">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="center">
+        <div id="atrium-username">
+          <br />
+          <strong>Enter your atrium username below:</strong>
+          <br />
+          <input id="atrium-username" type="input" name="atrium-username" value="">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="center">
+        <div id="atrium-password">
+          <br />
+          <strong>Enter your atrium password below:</strong>
+          <br />
+          <input id="atrium-password" type="password" name="atrium-password" value="">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><button onclick="save_options()">Save</button></td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Atrium Timer",
+  "version": "1.0",
+  "description": "Displays your currently active timers from Atrium.",
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "active_timers.html"
+  },
+  "permissions": [
+    "http://api.flickr.com/"
+  ]
+}
